@@ -54,17 +54,18 @@ namespace ComercialSys
               , Convert.ToInt32(txtCategoria.Text)
               , Convert.ToDouble(txtEstoqueMinimo.Text)
               , Convert.ToDouble(txtClasseDesconto.Text)
+            
               , true);
 
             if (produto.Editar(produto.Id))
             {
-                MessageBox.Show($"o Produto {produto.descricao} foi alterado com sucesso!");
+                MessageBox.Show($"o Produto {produto.CodBarras} foi alterado com sucesso!");
             }
             else
             {
-                MessageBox.Show($"Falha ao alterar o produto \"{produto.descricao}\" !");
+                MessageBox.Show($"Falha ao alterar o produto \"{produto.CodBarras}\" !");
             }
-
+            
         }
 
         private void btnConsultarPorId_Click(object sender, EventArgs e)
@@ -85,18 +86,17 @@ namespace ComercialSys
             {
                 if (txtId.Text.Length > 0)
                 {
-                    Produto produto = produto.ObterPorId(int.Parse(txtId.Text));
+                    Produto produto = Produto.ObterPorId(int.Parse(txtId.Text));
                     mskCodigo.Text = produto.CodBarras;
                     txtDescricao.Text = produto.Descricao;
-                    produto.ValorUnit = Convert.ToDouble(mskValor.Text);
+                    produto.ValoUnit = Convert.ToDouble(mskValor.Text);
                     cmbUnidedeVendas.Text = produto.UnidadeVenda;
                     produto.CategoriaId = int.Parse(txtCategoria.Text);
                     produto.EstoqueMinimo = Convert.ToDouble(txtEstoqueMinimo.Text);
                     produto.ClasseDesconto = Convert.ToDouble(txtClasseDesconto.Text);
 
                     txtId.ReadOnly = true;
-                    btnConsultarPorId.Text = "&Consultar";
-                    cmbUnidedeVendas.SelectedValue = produto.cmbUnidedeVendas.Id;
+                    btnConsultarPorId.Text = "&Consultar";                    
                     btnEditar.Enabled = true;
                 }
             }
