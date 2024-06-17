@@ -56,6 +56,7 @@
             clnCategoria = new DataGridViewTextBoxColumn();
             clnEstoque = new DataGridViewTextBoxColumn();
             clnClasseDesconto = new DataGridViewTextBoxColumn();
+            txtdataCad = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             SuspendLayout();
             // 
@@ -297,11 +298,22 @@
             clnClasseDesconto.ReadOnly = true;
             clnClasseDesconto.Width = 90;
             // 
+            // txtdataCad
+            // 
+            txtdataCad.Location = new Point(469, -2);
+            txtdataCad.Multiline = true;
+            txtdataCad.Name = "txtdataCad";
+            txtdataCad.Size = new Size(100, 23);
+            txtdataCad.TabIndex = 21;
+            txtdataCad.Text = "0";
+            txtdataCad.Visible = false;
+            // 
             // FrmProduto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(txtdataCad);
             Controls.Add(dgvProdutos);
             Controls.Add(btnConsultarPorId);
             Controls.Add(txtId);
@@ -359,5 +371,6 @@
         private DataGridViewTextBoxColumn clnCategoria;
         private DataGridViewTextBoxColumn clnEstoque;
         private DataGridViewTextBoxColumn clnClasseDesconto;
+        private TextBox txtdataCad;
     }
 }
