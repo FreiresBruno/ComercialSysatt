@@ -188,6 +188,7 @@
             btnEditar.TabIndex = 7;
             btnEditar.Text = "&Editar";
             btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnInserir
             // 
@@ -220,6 +221,7 @@
             dgvUsuarios.RowHeadersVisible = false;
             dgvUsuarios.Size = new Size(500, 150);
             dgvUsuarios.TabIndex = 3;
+            dgvUsuarios.CellContentClick += dgvUsuarios_CellContentClick;
             // 
             // clnId
             // 

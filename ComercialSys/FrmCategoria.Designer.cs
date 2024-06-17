@@ -131,6 +131,7 @@
             btnEditar.TabIndex = 7;
             btnEditar.Text = "&Editar";
             btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnInserir
             // 
@@ -198,7 +199,7 @@
             txtBusca.Size = new Size(501, 23);
             txtBusca.TabIndex = 5;
             // 
-            // Categoria
+            // FrmCategoria
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -206,7 +207,7 @@
             Controls.Add(dgvUsuarios);
             Controls.Add(groupBox1);
             Controls.Add(txtBusca);
-            Name = "Categoria";
+            Name = "FrmCategoria";
             Text = "Categoria";
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
             groupBox1.ResumeLayout(false);
