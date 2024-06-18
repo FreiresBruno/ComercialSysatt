@@ -13,21 +13,21 @@ namespace ComClassSys
     public class Produto
     {
         public int Id { get; set; }
-        public string CodBarras { get; set; }
-        public string Descricao { get; set; }
-        public double ValoUnit { get; set; }
-        public string UnidadeVenda { get; set; }
-        public int CategoriaId { get; set; }
-        public double EstoqueMinimo { get; set; }
-        public double ClasseDesconto { get; set; }
-        public string Imagem { get; set; }
+        public string? CodBarras { get; set; }
+        public string? Descricao { get; set; }
+        public double? ValoUnit { get; set; }
+        public string? UnidadeVenda { get; set; }
+        public Categoria CategoriaId { get; set; }
+        public double? EstoqueMinimo { get; set; }
+        public double? ClasseDesconto { get; set; }
+        public string? Imagem { get; set; }
         public DateTime DataCad { get; set; }
 
         public Produto()
         {
             Id = 0;
         }
-        public Produto(int id, string codBarras, string descricao, double valoUnit, string unidadeVenda, int categoriaId, double estoqueMinimo, double classeDesconto, string imagem, DateTime dataCad)
+        public Produto(int id, string codBarras, string descricao, double valoUnit, string unidadeVenda, Categoria categoriaId, double estoqueMinimo, double classeDesconto, string imagem, DateTime dataCad)
         {
             Id = id;
             CodBarras = codBarras;
@@ -40,7 +40,7 @@ namespace ComClassSys
             Imagem = imagem;
             DataCad = dataCad;
         }
-        public Produto(string codBarras, string descricao, double valoUnit, string unidadeVenda, int categoriaId, double estoqueMinimo, double classeDesconto, string imagem)
+        public Produto(string codBarras, string descricao, double valoUnit, string unidadeVenda, Categoria categoriaId, double estoqueMinimo, double classeDesconto, string imagem)
         {
             CodBarras = codBarras;
             Descricao = descricao;
@@ -51,7 +51,7 @@ namespace ComClassSys
             ClasseDesconto = classeDesconto;
             Imagem = imagem;
         }
-        public Produto(string codBarras, string descricao, double valoUnit, string unidadeVenda, int categoriaId, double estoqueMinimo, double classeDesconto)
+        public Produto(string codBarras, string descricao, double valoUnit, string unidadeVenda, Categoria categoriaId, double estoqueMinimo, double classeDesconto)
         {
             CodBarras = codBarras;
             Descricao = descricao;
@@ -62,11 +62,11 @@ namespace ComClassSys
             ClasseDesconto = classeDesconto;
             
         }
-        public Produto(int id,string codBarras, string descricao, double valoUnit, string unidadeVenda, int categoriaId, double estoqueMinimo, double classeDesconto)
+        public Produto(int id,string codBarras, string descricao, double valoUnit, string unidadeVenda, Categoria categoriaId, double estoqueMinimo, double classeDesconto)
         {
             Id = id;
             CodBarras = codBarras;
-            Descricao = descricao;
+            Descricao= descricao;
             ValoUnit = valoUnit;
             UnidadeVenda = unidadeVenda;
             CategoriaId = categoriaId;
@@ -120,8 +120,8 @@ namespace ComClassSys
                  , dr.GetString(2)
                  ,dr.GetDouble(3)
                  ,dr.GetString(4)
-                 ,dr.GetInt32(5)
-                 ,dr.GetDouble(6)
+                 ,Categoria.ObterPorId((5))
+                 , dr.GetDouble(6)
                  ,dr.GetDouble(7)
             
 
@@ -152,7 +152,7 @@ namespace ComClassSys
                  , dr.GetString(2)
                  , dr.GetDouble(3)
                  , dr.GetString(4)
-                 , dr.GetInt32(5)
+                , Categoria.ObterPorId((5))
                  , dr.GetDouble(6)
                  , dr.GetDouble(7)
                  

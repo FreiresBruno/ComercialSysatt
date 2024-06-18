@@ -29,7 +29,7 @@ namespace ComercialSys
               , txtDescricao.Text
               , Convert.ToDouble(mskValor.Text)
               , cmbUnidedeVendas.Text
-              , Convert.ToInt32(txtCategoria.Text)
+              ,Categoria.ObterPorId(Convert.ToInt32(cbmCategoria.SelectedValue))
               , Convert.ToDouble(txtEstoqueMinimo.Text)
               , Convert.ToDouble(txtClasseDesconto.Text)
 
@@ -54,7 +54,7 @@ namespace ComercialSys
               , txtDescricao.Text
               , Convert.ToDouble(mskValor.Text)
               , cmbUnidedeVendas.Text
-              , Convert.ToInt32(txtCategoria.Text)
+              , Categoria.ObterPorId(Convert.ToInt32(cbmCategoria.SelectedValue))
               , Convert.ToDouble(txtEstoqueMinimo.Text)
               , Convert.ToDouble(txtClasseDesconto.Text)
               
@@ -74,12 +74,11 @@ namespace ComercialSys
 
         private void btnConsultarPorId_Click(object sender, EventArgs e)
         {
-            if (btnConsultarPorId.Text == "&Consultar")
+            if (btnConsultarPorId.Text == "&Cons")
             {
                 mskCodigo.Clear();
                 txtDescricao.Clear();
                 mskValor.Clear();
-                txtCategoria.Clear();
                 txtEstoqueMinimo.Clear();
                 txtClasseDesconto.Clear();
                 txtId.ReadOnly = false;
@@ -95,15 +94,16 @@ namespace ComercialSys
                     produto.Descricao = txtDescricao.Text;
                     produto.ValoUnit = Convert.ToDouble(mskValor.Text);
                     produto.UnidadeVenda = cmbUnidedeVendas.Text;
-                    produto.CategoriaId = int.Parse(txtCategoria.Text);
                     produto.EstoqueMinimo = Convert.ToDouble(txtEstoqueMinimo.Text);
                     produto.ClasseDesconto = Convert.ToDouble(txtClasseDesconto.Text);
                     txtId.ReadOnly = true;
-                    btnConsultarPorId.Text = "&Consultar";                    
+                    btnConsultarPorId.Text = "&Consultar";
+                    cbmCategoria.SelectedValue = produto.CategoriaId.Id;
                     btnEditar.Enabled = true;
                 }
             }
         }
+
 
         private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -115,6 +115,9 @@ namespace ComercialSys
             var lista = Produto.ObterLista();
             dgvProdutos.Rows.Clear();
             int count = 0;
+
+          
+
             foreach (var produto in lista)
             {
                 dgvProdutos.Rows.Add();
