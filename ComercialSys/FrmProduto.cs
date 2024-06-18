@@ -20,6 +20,8 @@ namespace ComercialSys
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
+            string unidadeVenda = string.Empty;
+            unidadeVenda = cmbUnidedeVendas.SelectedIndex == 0 ? "S" : "N";
             mskCodigo.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             mskValor.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             Produto produto = new Produto(mskCodigo.Text
@@ -30,7 +32,8 @@ namespace ComercialSys
               , Convert.ToInt32(txtCategoria.Text)
               , Convert.ToDouble(txtEstoqueMinimo.Text)
               , Convert.ToDouble(txtClasseDesconto.Text)
-                );
+
+                ) ;
 
             produto.Inserir();
             if (produto.Id > 0)
@@ -54,8 +57,9 @@ namespace ComercialSys
               , Convert.ToInt32(txtCategoria.Text)
               , Convert.ToDouble(txtEstoqueMinimo.Text)
               , Convert.ToDouble(txtClasseDesconto.Text)
+              
             
-              , true);
+              );
 
             if (produto.Editar(produto.Id))
             {
@@ -87,14 +91,13 @@ namespace ComercialSys
                 if (txtId.Text.Length > 0)
                 {
                     Produto produto = Produto.ObterPorId(int.Parse(txtId.Text));
-                    mskCodigo.Text = produto.CodBarras;
-                    txtDescricao.Text = produto.Descricao;
+                    produto.CodBarras = mskCodigo.Text;
+                    produto.Descricao = txtDescricao.Text;
                     produto.ValoUnit = Convert.ToDouble(mskValor.Text);
-                    cmbUnidedeVendas.Text = produto.UnidadeVenda;
+                    produto.UnidadeVenda = cmbUnidedeVendas.Text;
                     produto.CategoriaId = int.Parse(txtCategoria.Text);
                     produto.EstoqueMinimo = Convert.ToDouble(txtEstoqueMinimo.Text);
                     produto.ClasseDesconto = Convert.ToDouble(txtClasseDesconto.Text);
-
                     txtId.ReadOnly = true;
                     btnConsultarPorId.Text = "&Consultar";                    
                     btnEditar.Enabled = true;
@@ -122,7 +125,7 @@ namespace ComercialSys
                 dgvProdutos.Rows[count].Cells[4].Value = produto.UnidadeVenda;
                 dgvProdutos.Rows[count].Cells[5].Value = produto.CategoriaId;
                 dgvProdutos.Rows[count].Cells[6].Value = produto.EstoqueMinimo;
-                dgvProdutos.Rows[count].Cells[6].Value = produto.ClasseDesconto;
+                dgvProdutos.Rows[count].Cells[7].Value = produto.ClasseDesconto;
 
                 count++;
             }

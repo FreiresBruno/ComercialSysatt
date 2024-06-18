@@ -60,6 +60,19 @@ namespace ComClassSys
             CategoriaId = categoriaId;
             EstoqueMinimo = estoqueMinimo;
             ClasseDesconto = classeDesconto;
+            
+        }
+        public Produto(int id,string codBarras, string descricao, double valoUnit, string unidadeVenda, int categoriaId, double estoqueMinimo, double classeDesconto)
+        {
+            Id = id;
+            CodBarras = codBarras;
+            Descricao = descricao;
+            ValoUnit = valoUnit;
+            UnidadeVenda = unidadeVenda;
+            CategoriaId = categoriaId;
+            EstoqueMinimo = estoqueMinimo;
+            ClasseDesconto = classeDesconto;
+            
         }
         public void Inserir()
         {
@@ -78,6 +91,7 @@ namespace ComClassSys
 
         public bool Editar(int id)
         {
+            bool resultado = false;
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_produto_update";
@@ -109,8 +123,7 @@ namespace ComClassSys
                  ,dr.GetInt32(5)
                  ,dr.GetDouble(6)
                  ,dr.GetDouble(7)
-                 ,dr.GetString(8)
-                 ,dr.GetDateTime(9)
+            
 
                  );
             }
@@ -142,8 +155,8 @@ namespace ComClassSys
                  , dr.GetInt32(5)
                  , dr.GetDouble(6)
                  , dr.GetDouble(7)
-                 , dr.GetString(8)
-                 , dr.GetDateTime(9)
+                 
+               
  ));
             }
             return lista;

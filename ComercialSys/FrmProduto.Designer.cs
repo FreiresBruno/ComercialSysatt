@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            txtCategoria = new TextBox();
             txtDescricao = new TextBox();
             txtClasseDesconto = new TextBox();
             mskCodigo = new MaskedTextBox();
@@ -52,19 +51,13 @@
             clnCodigoDeBarras = new DataGridViewTextBoxColumn();
             clnDescricao = new DataGridViewTextBoxColumn();
             clnvalor = new DataGridViewTextBoxColumn();
-            clnUnidadeVenda = new DataGridViewCheckBoxColumn();
+            clnUnidadeVenda = new DataGridViewTextBoxColumn();
             clnCategoria = new DataGridViewTextBoxColumn();
             clnEstoque = new DataGridViewTextBoxColumn();
             clnClasseDesconto = new DataGridViewTextBoxColumn();
+            txtCategoria = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             SuspendLayout();
-            // 
-            // txtCategoria
-            // 
-            txtCategoria.Location = new Point(288, 148);
-            txtCategoria.Name = "txtCategoria";
-            txtCategoria.Size = new Size(190, 23);
-            txtCategoria.TabIndex = 5;
             // 
             // txtDescricao
             // 
@@ -145,9 +138,9 @@
             label5.AutoSize = true;
             label5.Location = new Point(210, 151);
             label5.Name = "label5";
-            label5.Size = new Size(72, 15);
+            label5.Size = new Size(61, 15);
             label5.TabIndex = 11;
-            label5.Text = "Categoria ID";
+            label5.Text = "Categoria ";
             // 
             // label6
             // 
@@ -273,6 +266,8 @@
             clnUnidadeVenda.HeaderText = "Unidade de Venda";
             clnUnidadeVenda.Name = "clnUnidadeVenda";
             clnUnidadeVenda.ReadOnly = true;
+            clnUnidadeVenda.Resizable = DataGridViewTriState.True;
+            clnUnidadeVenda.SortMode = DataGridViewColumnSortMode.NotSortable;
             clnUnidadeVenda.Width = 110;
             // 
             // clnCategoria
@@ -297,11 +292,19 @@
             clnClasseDesconto.ReadOnly = true;
             clnClasseDesconto.Width = 90;
             // 
+            // txtCategoria
+            // 
+            txtCategoria.Location = new Point(288, 151);
+            txtCategoria.Name = "txtCategoria";
+            txtCategoria.Size = new Size(190, 23);
+            txtCategoria.TabIndex = 21;
+            // 
             // FrmProduto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(txtCategoria);
             Controls.Add(dgvProdutos);
             Controls.Add(btnConsultarPorId);
             Controls.Add(txtId);
@@ -321,7 +324,6 @@
             Controls.Add(mskCodigo);
             Controls.Add(txtDescricao);
             Controls.Add(txtClasseDesconto);
-            Controls.Add(txtCategoria);
             Name = "FrmProduto";
             Text = "FrmProduto";
             Load += FrmProduto_Load;
@@ -331,7 +333,6 @@
         }
 
         #endregion
-        private TextBox txtCategoria;
         private TextBox txtDescricao;
         private TextBox txtClasseDesconto;
         private MaskedTextBox mskCodigo;
@@ -355,9 +356,10 @@
         private DataGridViewTextBoxColumn clnCodigoDeBarras;
         private DataGridViewTextBoxColumn clnDescricao;
         private DataGridViewTextBoxColumn clnvalor;
-        private DataGridViewCheckBoxColumn clnUnidadeVenda;
+        private DataGridViewTextBoxColumn clnUnidadeVenda;
         private DataGridViewTextBoxColumn clnCategoria;
         private DataGridViewTextBoxColumn clnEstoque;
         private DataGridViewTextBoxColumn clnClasseDesconto;
+        private TextBox txtCategoria;
     }
 }
