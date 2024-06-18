@@ -28,38 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgvUsuarios = new DataGridView();
+            dgvCategoria = new DataGridView();
             clnId = new DataGridViewTextBoxColumn();
             clnNome = new DataGridViewTextBoxColumn();
             clnSigla = new DataGridViewTextBoxColumn();
             groupBox1 = new GroupBox();
             btnConsultar = new Button();
-            btnDeletar = new Button();
             btnEditar = new Button();
             btnInserir = new Button();
-            txtNome = new TextBox();
+            txtCategoriaNome = new TextBox();
             label1 = new Label();
             label2 = new Label();
             txtSigla = new TextBox();
             label3 = new Label();
             txtId = new TextBox();
             txtBusca = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvCategoria).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
-            // dgvUsuarios
+            // dgvCategoria
             // 
-            dgvUsuarios.AllowUserToAddRows = false;
-            dgvUsuarios.AllowUserToDeleteRows = false;
-            dgvUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvUsuarios.Columns.AddRange(new DataGridViewColumn[] { clnId, clnNome, clnSigla });
-            dgvUsuarios.Location = new Point(148, 281);
-            dgvUsuarios.Name = "dgvUsuarios";
-            dgvUsuarios.ReadOnly = true;
-            dgvUsuarios.RowHeadersVisible = false;
-            dgvUsuarios.Size = new Size(500, 150);
-            dgvUsuarios.TabIndex = 6;
+            dgvCategoria.AllowUserToAddRows = false;
+            dgvCategoria.AllowUserToDeleteRows = false;
+            dgvCategoria.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCategoria.Columns.AddRange(new DataGridViewColumn[] { clnId, clnNome, clnSigla });
+            dgvCategoria.Location = new Point(148, 281);
+            dgvCategoria.Name = "dgvCategoria";
+            dgvCategoria.ReadOnly = true;
+            dgvCategoria.RowHeadersVisible = false;
+            dgvCategoria.Size = new Size(500, 150);
+            dgvCategoria.TabIndex = 6;
             // 
             // clnId
             // 
@@ -67,7 +66,7 @@
             clnId.HeaderText = "ID";
             clnId.Name = "clnId";
             clnId.ReadOnly = true;
-            clnId.Width = 40;
+            clnId.Width = 166;
             // 
             // clnNome
             // 
@@ -75,7 +74,7 @@
             clnNome.HeaderText = "Nome";
             clnNome.Name = "clnNome";
             clnNome.ReadOnly = true;
-            clnNome.Width = 210;
+            clnNome.Width = 166;
             // 
             // clnSigla
             // 
@@ -88,10 +87,9 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(btnConsultar);
-            groupBox1.Controls.Add(btnDeletar);
             groupBox1.Controls.Add(btnEditar);
             groupBox1.Controls.Add(btnInserir);
-            groupBox1.Controls.Add(txtNome);
+            groupBox1.Controls.Add(txtCategoriaNome);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(txtSigla);
@@ -107,25 +105,17 @@
             // 
             // btnConsultar
             // 
-            btnConsultar.Location = new Point(145, 183);
+            btnConsultar.Location = new Point(30, 183);
             btnConsultar.Name = "btnConsultar";
             btnConsultar.Size = new Size(75, 23);
             btnConsultar.TabIndex = 8;
             btnConsultar.Text = "&Consultar";
             btnConsultar.UseVisualStyleBackColor = true;
-            // 
-            // btnDeletar
-            // 
-            btnDeletar.Location = new Point(38, 183);
-            btnDeletar.Name = "btnDeletar";
-            btnDeletar.Size = new Size(75, 23);
-            btnDeletar.TabIndex = 8;
-            btnDeletar.Text = "Deletar";
-            btnDeletar.UseVisualStyleBackColor = true;
+            btnConsultar.Click += btnConsultar_Click;
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(257, 183);
+            btnEditar.Location = new Point(212, 183);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(75, 23);
             btnEditar.TabIndex = 7;
@@ -135,19 +125,20 @@
             // 
             // btnInserir
             // 
-            btnInserir.Location = new Point(366, 183);
+            btnInserir.Location = new Point(396, 183);
             btnInserir.Name = "btnInserir";
             btnInserir.Size = new Size(75, 23);
             btnInserir.TabIndex = 5;
             btnInserir.Text = "&Inserir";
             btnInserir.UseVisualStyleBackColor = true;
+            btnInserir.Click += btnInserir_Click;
             // 
-            // txtNome
+            // txtCategoriaNome
             // 
-            txtNome.Location = new Point(101, 72);
-            txtNome.Name = "txtNome";
-            txtNome.Size = new Size(322, 23);
-            txtNome.TabIndex = 0;
+            txtCategoriaNome.Location = new Point(101, 72);
+            txtCategoriaNome.Name = "txtCategoriaNome";
+            txtCategoriaNome.Size = new Size(322, 23);
+            txtCategoriaNome.TabIndex = 0;
             // 
             // label1
             // 
@@ -204,12 +195,13 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(dgvUsuarios);
+            Controls.Add(dgvCategoria);
             Controls.Add(groupBox1);
             Controls.Add(txtBusca);
             Name = "FrmCategoria";
             Text = "Categoria";
-            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
+            Load += FrmCategoria_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvCategoria).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -218,21 +210,20 @@
 
         #endregion
 
-        private DataGridView dgvUsuarios;
+        private DataGridView dgvCategoria;
         private GroupBox groupBox1;
-        private Button btnDeletar;
         private Button btnEditar;
         private Button btnInserir;
-        private TextBox txtNome;
+        private TextBox txtCategoriaNome;
         private Label label1;
         private Label label2;
         private TextBox txtSigla;
         private Label label3;
         private TextBox txtId;
         private TextBox txtBusca;
+        private Button btnConsultar;
         private DataGridViewTextBoxColumn clnId;
         private DataGridViewTextBoxColumn clnNome;
         private DataGridViewTextBoxColumn clnSigla;
-        private Button btnConsultar;
     }
 }

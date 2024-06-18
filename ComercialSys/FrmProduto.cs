@@ -20,14 +20,12 @@ namespace ComercialSys
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
-            string unidadeVenda = string.Empty;
-            unidadeVenda = cmbUnidedeVendas.SelectedIndex == 0 ? "S" : "N";
             mskCodigo.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            mskValor.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+           
             Produto produto = new Produto(mskCodigo.Text
 
               , txtDescricao.Text
-              , Convert.ToDouble(mskValor.Text)
+              , Convert.ToDouble(txtValorUnit.Text)
               , cmbUnidedeVendas.Text
               ,Categoria.ObterPorId(Convert.ToInt32(cbmCategoria.SelectedValue))
               , Convert.ToDouble(txtEstoqueMinimo.Text)
@@ -46,13 +44,12 @@ namespace ComercialSys
         private void btnEditar_Click(object sender, EventArgs e)
         {
             mskCodigo.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            mskValor.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             Produto produto = new Produto(
 
               int.Parse(txtId.Text)
               , mskCodigo.Text
               , txtDescricao.Text
-              , Convert.ToDouble(mskValor.Text)
+              , Convert.ToDouble(txtValorUnit)
               , cmbUnidedeVendas.Text
               , Categoria.ObterPorId(Convert.ToInt32(cbmCategoria.SelectedValue))
               , Convert.ToDouble(txtEstoqueMinimo.Text)
@@ -74,11 +71,11 @@ namespace ComercialSys
 
         private void btnConsultarPorId_Click(object sender, EventArgs e)
         {
-            if (btnConsultarPorId.Text == "&Cons")
+            if (btnConsultarPorId.Text == "&Consultar")
             {
                 mskCodigo.Clear();
                 txtDescricao.Clear();
-                mskValor.Clear();
+                txtValorUnit.Clear();
                 txtEstoqueMinimo.Clear();
                 txtClasseDesconto.Clear();
                 txtId.ReadOnly = false;
@@ -92,7 +89,7 @@ namespace ComercialSys
                     Produto produto = Produto.ObterPorId(int.Parse(txtId.Text));
                     produto.CodBarras = mskCodigo.Text;
                     produto.Descricao = txtDescricao.Text;
-                    produto.ValoUnit = Convert.ToDouble(mskValor.Text);
+                    produto.ValoUnit = Convert.ToDouble(txtValorUnit);
                     produto.UnidadeVenda = cmbUnidedeVendas.Text;
                     produto.EstoqueMinimo = Convert.ToDouble(txtEstoqueMinimo.Text);
                     produto.ClasseDesconto = Convert.ToDouble(txtClasseDesconto.Text);
@@ -112,6 +109,15 @@ namespace ComercialSys
 
         private void FrmProduto_Load(object sender, EventArgs e)
         {
+
+            var categorias = Categoria.ObterLista();
+            cbmCategoria.DataSource = categorias;
+            cbmCategoria.DisplayMember = "descricao";
+            cbmCategoria.ValueMember = "id";
+
+
+
+
             var lista = Produto.ObterLista();
             dgvProdutos.Rows.Clear();
             int count = 0;

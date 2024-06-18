@@ -86,7 +86,7 @@
             dgvEnderecos.AllowUserToAddRows = false;
             dgvEnderecos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEnderecos.Columns.AddRange(new DataGridViewColumn[] { clnCep, clnLogradouro, clnNumero, clnComplemento, clnBairro, clnCidade, clnUf, clnTipoEndereco });
-            dgvEnderecos.Location = new Point(69, 244);
+            dgvEnderecos.Location = new Point(74, 244);
             dgvEnderecos.Name = "dgvEnderecos";
             dgvEnderecos.ReadOnly = true;
             dgvEnderecos.RowHeadersVisible = false;

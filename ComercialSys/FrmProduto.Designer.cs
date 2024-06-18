@@ -31,7 +31,6 @@
             txtDescricao = new TextBox();
             txtClasseDesconto = new TextBox();
             mskCodigo = new MaskedTextBox();
-            mskValor = new MaskedTextBox();
             cmbUnidedeVendas = new ComboBox();
             label1 = new Label();
             label2 = new Label();
@@ -56,6 +55,7 @@
             clnEstoque = new DataGridViewTextBoxColumn();
             clnClasseDesconto = new DataGridViewTextBoxColumn();
             cbmCategoria = new ComboBox();
+            txtValorUnit = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             SuspendLayout();
             // 
@@ -80,13 +80,6 @@
             mskCodigo.Name = "mskCodigo";
             mskCodigo.Size = new Size(190, 23);
             mskCodigo.TabIndex = 1;
-            // 
-            // mskValor
-            // 
-            mskValor.Location = new Point(288, 90);
-            mskValor.Name = "mskValor";
-            mskValor.Size = new Size(190, 23);
-            mskValor.TabIndex = 3;
             // 
             // cmbUnidedeVendas
             // 
@@ -300,11 +293,19 @@
             cbmCategoria.Size = new Size(190, 23);
             cbmCategoria.TabIndex = 21;
             // 
+            // txtValorUnit
+            // 
+            txtValorUnit.Location = new Point(288, 90);
+            txtValorUnit.Name = "txtValorUnit";
+            txtValorUnit.Size = new Size(190, 23);
+            txtValorUnit.TabIndex = 22;
+            // 
             // FrmProduto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(txtValorUnit);
             Controls.Add(cbmCategoria);
             Controls.Add(dgvProdutos);
             Controls.Add(btnConsultarPorId);
@@ -321,7 +322,6 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(cmbUnidedeVendas);
-            Controls.Add(mskValor);
             Controls.Add(mskCodigo);
             Controls.Add(txtDescricao);
             Controls.Add(txtClasseDesconto);
@@ -337,7 +337,6 @@
         private TextBox txtDescricao;
         private TextBox txtClasseDesconto;
         private MaskedTextBox mskCodigo;
-        private MaskedTextBox mskValor;
         private ComboBox cmbUnidedeVendas;
         private Label label1;
         private Label label2;
@@ -362,5 +361,6 @@
         private DataGridViewTextBoxColumn clnEstoque;
         private DataGridViewTextBoxColumn clnClasseDesconto;
         private ComboBox cbmCategoria;
+        private TextBox txtValorUnit;
     }
 }

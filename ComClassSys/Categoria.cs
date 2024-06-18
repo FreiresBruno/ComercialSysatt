@@ -1,4 +1,12 @@
-﻿using System.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Security.Policy;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace ComClassSys
 {
     public class Categoria
@@ -8,49 +16,39 @@ namespace ComClassSys
         public string? Nome { get; set; }
         public string? Sigla { get; set; }
 
-
-        // métodos construtores
-        public Categoria()
-        {
-            Id = 0;
-
-        }
-        public Categoria(string nome, string sigla)
-        {
-            Nome = nome;
-            Sigla = sigla;
-
-        }
+        // metodos construtores
+        public Categoria() { }
         public Categoria(int id, string nome, string sigla)
         {
             Id = id;
             Nome = nome;
             Sigla = sigla;
-
+        }
+        public Categoria(string nome, string sigla)
+        {
+            Nome = nome;
+            Sigla = sigla;
         }
 
-        // métodos da classes - Funcionalidades de usuário: RF04-Inserir Usuário
+        // metodos da classe
         public void Inserir()
         {
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_categoria_insert";
             cmd.Parameters.AddWithValue("spnome", Nome);
-            cmd.Parameters.AddWithValue("spSigla", Sigla);
-            cmd.ExecuteNonQuery();// executar do Mysql (sinal do raiozinho)
-
-
+            cmd.Parameters.AddWithValue("spsigla", Sigla);
+            cmd.ExecuteNonQuery();
         }
         public bool Editar(int id)
         {
             bool resultado = false;
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "sp_categoria_update"; // nome da procedure de alteração de Categoria
+            cmd.CommandText = "sp_categoria_update";
             cmd.Parameters.AddWithValue("spid", Id);
             cmd.Parameters.AddWithValue("spnome", Nome);
             cmd.Parameters.AddWithValue("spsigla", Sigla);
-
             try
             {
                 cmd.ExecuteNonQuery();
@@ -63,22 +61,23 @@ namespace ComClassSys
 
             return resultado;
         }
+        
         public static Categoria ObterPorId(int id)
         {
-            Categoria Categoria = new Categoria();
+            Categoria categoria = new();
             var cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"select * from categorias where id ={id}";
-            var dr = cmd.ExecuteReader();// dr =  DataReader = retorno da consulta (caso haja)
+            cmd.CommandText = $"select * from categorias where id={id}";
+            var dr = cmd.ExecuteReader();
+
             while (dr.Read())
             {
-                // 1ª forma
-                Categoria = new(dr.GetInt32(0)
-                    , dr.GetString(1)
-                    , dr.GetString(2)
-                    );
+                categoria.Id = dr.GetInt32(0);
+                categoria.Nome = dr.GetString(1);
+                categoria.Sigla = dr.GetString(2);
             }
-            return Categoria;
+
+            return categoria;
         }
         public static List<Categoria> ObterLista(string nome = null)
         {
@@ -87,7 +86,7 @@ namespace ComClassSys
             cmd.CommandType = CommandType.Text;
             if (nome == null)
             {
-                cmd.CommandText = "select * from categorias";
+                cmd.CommandText = "select * from categorias order by nome";
             }
             else
             {
@@ -97,13 +96,14 @@ namespace ComClassSys
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                lista.Add(new Categoria(
-                                      dr.GetInt32(0),
-                                      dr.GetString(1),
-                                      dr.GetString(2)
-
-                                     ));
+                lista.Add(new(
+                            dr.GetInt32(0)
+                            ,dr.GetString(1)
+                            ,dr.GetString(2)
+                        )
+                    );
             }
+
             return lista;
         }
     }
