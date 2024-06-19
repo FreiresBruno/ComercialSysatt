@@ -30,6 +30,26 @@ namespace ComercialSys
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
+          
+        }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnConfirmar_Click_1(object sender, EventArgs e)
+        {
             if (txtEmail.Text != string.Empty && txtSenha.Text != string.Empty)
             {
                 var usuario = Usuario.EfetuarLogin(txtEmail.Text, txtSenha.Text);
@@ -48,21 +68,6 @@ namespace ComercialSys
             {
                 MessageBox.Show("Digite um email e senha para prosseguir!!!");
             }
-        }
-
-        private void FrmLogin_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -89,10 +89,14 @@ namespace ComercialSys
                     Produto produto = Produto.ObterPorId(int.Parse(txtId.Text));
                     produto.CodBarras = mskCodigo.Text;
                     produto.Descricao = txtDescricao.Text;
-                    produto.ValoUnit = Convert.ToDouble(txtValorUnit);
-                    produto.UnidadeVenda = txtUnidadeVenda.Text;
-                    produto.EstoqueMinimo = Convert.ToDouble(txtEstoqueMinimo.Text);
-                    produto.ClasseDesconto = Convert.ToDouble(txtClasseDesconto.Text);
+                    double valorUnit = Convert.ToDouble(produto.ValoUnit);
+                    double estoqueMinimo = Convert.ToDouble(produto.EstoqueMinimo);
+                    double classeDesconto = Convert.ToDouble(produto.ClasseDesconto);
+                   
+                    txtValorUnit.Text = Convert.ToString(valorUnit);
+                    txtEstoqueMinimo.Text = Convert.ToString(estoqueMinimo);
+                    txtClasseDesconto.Text = Convert.ToString(classeDesconto);
+
                     txtId.ReadOnly = true;
                     btnConsultarPorId.Text = "&Consultar";
                     cbmCategoria.SelectedValue = produto.CategoriaId.Id;

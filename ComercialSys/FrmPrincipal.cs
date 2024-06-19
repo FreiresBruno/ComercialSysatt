@@ -24,7 +24,9 @@ namespace ComercialSys
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-
+            FrmLogin login = new();
+            // login.MdiParent = this;
+            login.ShowDialog();
         }
 
         private void novoToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -36,9 +38,16 @@ namespace ComercialSys
 
         private void categoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           FrmCategoria frmcategoria = new FrmCategoria();
+            FrmCategoria frmcategoria = new FrmCategoria();
             frmcategoria.MdiParent = this;
             frmcategoria.Show();
+        }
+
+        private void novoToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            FrmPedido frmpedido = new FrmPedido();
+            frmpedido.MdiParent = this;
+            frmpedido.Show();
         }
     }
 }
