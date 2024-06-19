@@ -21,25 +21,24 @@ namespace ComercialSys
         private void btnInserir_Click(object sender, EventArgs e)
         {
             mskCodigo.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-           
-            Produto produto = new Produto(mskCodigo.Text
 
+            Produto produto = new Produto(
+                mskCodigo.Text
               , txtDescricao.Text
               , Convert.ToDouble(txtValorUnit.Text)
-              , cmbUnidedeVendas.Text
-              ,Categoria.ObterPorId(Convert.ToInt32(cbmCategoria.SelectedValue))
+              , txtUnidadeVenda.Text
+              , Categoria.ObterPorId(Convert.ToInt32(cbmCategoria.SelectedValue))
               , Convert.ToDouble(txtEstoqueMinimo.Text)
               , Convert.ToDouble(txtClasseDesconto.Text)
 
-                ) ;
+                );
 
             produto.Inserir();
-            if (produto.Id > 0)
-            {
-                MessageBox.Show($"Produto {produto.GetHashCode()} cadastrado com sucesso");
-            }
+            FrmProduto_Load(sender, e);
+
 
         }
+    
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -50,7 +49,7 @@ namespace ComercialSys
               , mskCodigo.Text
               , txtDescricao.Text
               , Convert.ToDouble(txtValorUnit)
-              , cmbUnidedeVendas.Text
+              , txtUnidadeVenda.Text
               , Categoria.ObterPorId(Convert.ToInt32(cbmCategoria.SelectedValue))
               , Convert.ToDouble(txtEstoqueMinimo.Text)
               , Convert.ToDouble(txtClasseDesconto.Text)
@@ -76,6 +75,7 @@ namespace ComercialSys
                 mskCodigo.Clear();
                 txtDescricao.Clear();
                 txtValorUnit.Clear();
+                txtUnidadeVenda.Clear();
                 txtEstoqueMinimo.Clear();
                 txtClasseDesconto.Clear();
                 txtId.ReadOnly = false;
@@ -90,7 +90,7 @@ namespace ComercialSys
                     produto.CodBarras = mskCodigo.Text;
                     produto.Descricao = txtDescricao.Text;
                     produto.ValoUnit = Convert.ToDouble(txtValorUnit);
-                    produto.UnidadeVenda = cmbUnidedeVendas.Text;
+                    produto.UnidadeVenda = txtUnidadeVenda.Text;
                     produto.EstoqueMinimo = Convert.ToDouble(txtEstoqueMinimo.Text);
                     produto.ClasseDesconto = Convert.ToDouble(txtClasseDesconto.Text);
                     txtId.ReadOnly = true;
@@ -112,7 +112,7 @@ namespace ComercialSys
 
             var categorias = Categoria.ObterLista();
             cbmCategoria.DataSource = categorias;
-            cbmCategoria.DisplayMember = "descricao";
+            cbmCategoria.DisplayMember = "nome";
             cbmCategoria.ValueMember = "id";
 
 

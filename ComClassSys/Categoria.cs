@@ -18,7 +18,7 @@ namespace ComClassSys
 
         // metodos construtores
         public Categoria() { }
-        public Categoria(int id, string nome, string sigla)
+        public Categoria(int id, string nome, string? sigla)
         {
             Id = id;
             Nome = nome;
@@ -74,7 +74,7 @@ namespace ComClassSys
             {
                 categoria.Id = dr.GetInt32(0);
                 categoria.Nome = dr.GetString(1);
-                categoria.Sigla = dr.GetString(2);
+                categoria.Sigla = null;
             }
 
             return categoria;
@@ -96,12 +96,12 @@ namespace ComClassSys
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                lista.Add(new(
-                            dr.GetInt32(0)
-                            ,dr.GetString(1)
-                            ,dr.GetString(2)
-                        )
-                    );
+                Categoria cat = new Categoria();
+                cat.Id = dr.GetInt32(0);
+                cat.Nome = dr.GetString(1);
+                cat.Sigla = null;
+
+                lista.Add(cat);
             }
 
             return lista;

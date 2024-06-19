@@ -31,7 +31,6 @@
             txtDescricao = new TextBox();
             txtClasseDesconto = new TextBox();
             mskCodigo = new MaskedTextBox();
-            cmbUnidedeVendas = new ComboBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -56,6 +55,7 @@
             clnClasseDesconto = new DataGridViewTextBoxColumn();
             cbmCategoria = new ComboBox();
             txtValorUnit = new TextBox();
+            txtUnidadeVenda = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             SuspendLayout();
             // 
@@ -80,15 +80,6 @@
             mskCodigo.Name = "mskCodigo";
             mskCodigo.Size = new Size(190, 23);
             mskCodigo.TabIndex = 1;
-            // 
-            // cmbUnidedeVendas
-            // 
-            cmbUnidedeVendas.FormattingEnabled = true;
-            cmbUnidedeVendas.Items.AddRange(new object[] { "1 - METRO", "2 - UNIDADE", "3 - QUILOGRAMA", "4 - LITRO", "5 - CAIXA ", "6 - MILILITRO", "7 - PEÇA ", "8 - FARDO", "9 - FRASCO", "10 - PACOTE", "11 - GRAMA" });
-            cmbUnidedeVendas.Location = new Point(288, 119);
-            cmbUnidedeVendas.Name = "cmbUnidedeVendas";
-            cmbUnidedeVendas.Size = new Size(190, 23);
-            cmbUnidedeVendas.TabIndex = 4;
             // 
             // label1
             // 
@@ -300,11 +291,19 @@
             txtValorUnit.Size = new Size(190, 23);
             txtValorUnit.TabIndex = 22;
             // 
+            // txtUnidadeVenda
+            // 
+            txtUnidadeVenda.Location = new Point(288, 119);
+            txtUnidadeVenda.Name = "txtUnidadeVenda";
+            txtUnidadeVenda.Size = new Size(190, 23);
+            txtUnidadeVenda.TabIndex = 23;
+            // 
             // FrmProduto
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(txtUnidadeVenda);
             Controls.Add(txtValorUnit);
             Controls.Add(cbmCategoria);
             Controls.Add(dgvProdutos);
@@ -321,7 +320,6 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(cmbUnidedeVendas);
             Controls.Add(mskCodigo);
             Controls.Add(txtDescricao);
             Controls.Add(txtClasseDesconto);
@@ -337,7 +335,6 @@
         private TextBox txtDescricao;
         private TextBox txtClasseDesconto;
         private MaskedTextBox mskCodigo;
-        private ComboBox cmbUnidedeVendas;
         private Label label1;
         private Label label2;
         private Label label3;
@@ -362,5 +359,6 @@
         private DataGridViewTextBoxColumn clnClasseDesconto;
         private ComboBox cbmCategoria;
         private TextBox txtValorUnit;
+        private TextBox txtUnidadeVenda;
     }
 }

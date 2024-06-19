@@ -83,7 +83,7 @@ namespace ComClassSys
             cmd.Parameters.AddWithValue("spdescricao", Descricao);
             cmd.Parameters.AddWithValue("spvalor_unit", ValoUnit);
             cmd.Parameters.AddWithValue("spunidade_venda", UnidadeVenda);
-            cmd.Parameters.AddWithValue("spcategoria_id", CategoriaId);
+            cmd.Parameters.AddWithValue("spcategoria_id", CategoriaId.Id);
             cmd.Parameters.AddWithValue("spestoque_minimo",EstoqueMinimo);
             cmd.Parameters.AddWithValue("spclasse_desconto", ClasseDesconto);
             Id = Convert.ToInt32(cmd.ExecuteScalar());
