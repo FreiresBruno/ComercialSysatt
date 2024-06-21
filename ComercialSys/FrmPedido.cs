@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComClassSys;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,6 +34,29 @@ namespace ComercialSys
         }
 
         private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNomeCliente_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtIdCliente_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox3.Text.Length > 0)
+            {
+                var cliente = Cliente.ObterPorId(int.Parse(textBox2.Text));
+                if (cliente.Id > 0)
+                {
+                    textBox3.Text = cliente.Nome;
+                }
+
+            }
+        }
+
+        private void btnAbrirPedido_Click(object sender, EventArgs e)
         {
 
         }

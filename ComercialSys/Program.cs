@@ -5,6 +5,9 @@ namespace ComercialSys
 {
     internal static class Program
     {
+        /// <summary>
+        //propriedade criada para armazenar os dados
+        /// </summary>
         public static Usuario Usuario { get; set; }
         /// <summary>
         ///  The main entry point for the application.

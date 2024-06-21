@@ -38,7 +38,8 @@ namespace ComercialSys
 
 
         }
-    
+
+
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -53,8 +54,7 @@ namespace ComercialSys
               , Categoria.ObterPorId(Convert.ToInt32(cbmCategoria.SelectedValue))
               , Convert.ToDouble(txtEstoqueMinimo.Text)
               , Convert.ToDouble(txtClasseDesconto.Text)
-              
-            
+
               );
 
             if (produto.Editar(produto.Id))
@@ -65,8 +65,8 @@ namespace ComercialSys
             {
                 MessageBox.Show($"Falha ao alterar o produto \"{produto.CodBarras}\" !");
             }
-            
         }
+        
 
         private void btnConsultarPorId_Click(object sender, EventArgs e)
         {
@@ -89,7 +89,7 @@ namespace ComercialSys
                     Produto produto = Produto.ObterPorId(int.Parse(txtId.Text));
                     produto.CodBarras = mskCodigo.Text;
                     produto.Descricao = txtDescricao.Text;
-                    double valorUnit = Convert.ToDouble(produto.ValoUnit);
+                    double valorUnit = Convert.ToDouble(produto.ValorUnit);
                     double estoqueMinimo = Convert.ToDouble(produto.EstoqueMinimo);
                     double classeDesconto = Convert.ToDouble(produto.ClasseDesconto);
                    

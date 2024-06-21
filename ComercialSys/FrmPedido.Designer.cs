@@ -45,15 +45,15 @@
             textBox3 = new TextBox();
             textBox4 = new TextBox();
             groupBox3 = new GroupBox();
+            txtdescricao = new TextBox();
+            txtQuantidade = new TextBox();
+            txtValorUnit = new TextBox();
             txtCodBarras = new TextBox();
+            label5 = new Label();
+            label9 = new Label();
+            btnInserir = new Button();
             label7 = new Label();
             label8 = new Label();
-            txtdescricao = new TextBox();
-            label9 = new Label();
-            txtValorUnit = new TextBox();
-            label5 = new Label();
-            txtQuantidade = new TextBox();
-            btnInserir = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox3.SuspendLayout();
@@ -105,6 +105,7 @@
             txtNomeCliente.Name = "txtNomeCliente";
             txtNomeCliente.Size = new Size(390, 23);
             txtNomeCliente.TabIndex = 3;
+            txtNomeCliente.TextChanged += txtNomeCliente_TextChanged;
             // 
             // txtIdCliente
             // 
@@ -112,6 +113,7 @@
             txtIdCliente.Name = "txtIdCliente";
             txtIdCliente.Size = new Size(100, 23);
             txtIdCliente.TabIndex = 3;
+            txtIdCliente.TextChanged += txtIdCliente_TextChanged;
             // 
             // textBox1
             // 
@@ -159,6 +161,7 @@
             btnAbrirPedido.TabIndex = 4;
             btnAbrirPedido.Text = "&Abrir Pedido";
             btnAbrirPedido.UseVisualStyleBackColor = true;
+            btnAbrirPedido.Click += btnAbrirPedido_Click;
             // 
             // dataGridView1
             // 
@@ -218,6 +221,30 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Produto";
             // 
+            // txtdescricao
+            // 
+            txtdescricao.Location = new Point(112, 37);
+            txtdescricao.Name = "txtdescricao";
+            txtdescricao.Size = new Size(218, 23);
+            txtdescricao.TabIndex = 5;
+            txtdescricao.TextChanged += textBox6_TextChanged;
+            // 
+            // txtQuantidade
+            // 
+            txtQuantidade.Location = new Point(442, 37);
+            txtQuantidade.Name = "txtQuantidade";
+            txtQuantidade.Size = new Size(100, 23);
+            txtQuantidade.TabIndex = 5;
+            txtQuantidade.TextChanged += textBox6_TextChanged;
+            // 
+            // txtValorUnit
+            // 
+            txtValorUnit.Location = new Point(336, 37);
+            txtValorUnit.Name = "txtValorUnit";
+            txtValorUnit.Size = new Size(100, 23);
+            txtValorUnit.TabIndex = 5;
+            txtValorUnit.TextChanged += textBox6_TextChanged;
+            // 
             // txtCodBarras
             // 
             txtCodBarras.Location = new Point(6, 37);
@@ -225,6 +252,34 @@
             txtCodBarras.Size = new Size(100, 23);
             txtCodBarras.TabIndex = 5;
             txtCodBarras.TextChanged += textBox6_TextChanged;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(472, 19);
+            label5.Name = "label5";
+            label5.Size = new Size(69, 15);
+            label5.TabIndex = 8;
+            label5.Text = "Quantidade";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(348, 19);
+            label9.Name = "label9";
+            label9.Size = new Size(78, 15);
+            label9.TabIndex = 8;
+            label9.Text = "Valor Unitário";
+            // 
+            // btnInserir
+            // 
+            btnInserir.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnInserir.Location = new Point(559, 29);
+            btnInserir.Name = "btnInserir";
+            btnInserir.Size = new Size(83, 33);
+            btnInserir.TabIndex = 4;
+            btnInserir.Text = "&Inserir";
+            btnInserir.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
@@ -243,58 +298,6 @@
             label8.Size = new Size(97, 15);
             label8.TabIndex = 8;
             label8.Text = "Código de Barras";
-            // 
-            // txtdescricao
-            // 
-            txtdescricao.Location = new Point(112, 37);
-            txtdescricao.Name = "txtdescricao";
-            txtdescricao.Size = new Size(218, 23);
-            txtdescricao.TabIndex = 5;
-            txtdescricao.TextChanged += textBox6_TextChanged;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(348, 19);
-            label9.Name = "label9";
-            label9.Size = new Size(78, 15);
-            label9.TabIndex = 8;
-            label9.Text = "Valor Unitário";
-            // 
-            // txtValorUnit
-            // 
-            txtValorUnit.Location = new Point(336, 37);
-            txtValorUnit.Name = "txtValorUnit";
-            txtValorUnit.Size = new Size(100, 23);
-            txtValorUnit.TabIndex = 5;
-            txtValorUnit.TextChanged += textBox6_TextChanged;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(472, 19);
-            label5.Name = "label5";
-            label5.Size = new Size(69, 15);
-            label5.TabIndex = 8;
-            label5.Text = "Quantidade";
-            // 
-            // txtQuantidade
-            // 
-            txtQuantidade.Location = new Point(442, 37);
-            txtQuantidade.Name = "txtQuantidade";
-            txtQuantidade.Size = new Size(100, 23);
-            txtQuantidade.TabIndex = 5;
-            txtQuantidade.TextChanged += textBox6_TextChanged;
-            // 
-            // btnInserir
-            // 
-            btnInserir.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnInserir.Location = new Point(559, 29);
-            btnInserir.Name = "btnInserir";
-            btnInserir.Size = new Size(83, 33);
-            btnInserir.TabIndex = 4;
-            btnInserir.Text = "&Inserir";
-            btnInserir.UseVisualStyleBackColor = true;
             // 
             // FrmPedido
             // 

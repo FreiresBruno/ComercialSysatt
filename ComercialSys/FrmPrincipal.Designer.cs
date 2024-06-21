@@ -45,7 +45,13 @@
             históricoToolStripMenuItem = new ToolStripMenuItem();
             movimentoToolStripMenuItem = new ToolStripMenuItem();
             caixaToolStripMenuItem = new ToolStripMenuItem();
+            mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
+            mySqlConnection1 = new MySql.Data.MySqlClient.MySqlConnection();
+            mySqlDataAdapter1 = new MySql.Data.MySqlClient.MySqlDataAdapter();
+            statusStrip1 = new StatusStrip();
+            tslUsuario = new ToolStripStatusLabel();
             menuStrip1.SuspendLayout();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -131,26 +137,26 @@
             // 
             pedidoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { novoToolStripMenuItem2, buscarToolStripMenuItem, históricoToolStripMenuItem });
             pedidoToolStripMenuItem.Name = "pedidoToolStripMenuItem";
-            pedidoToolStripMenuItem.Size = new Size(180, 22);
+            pedidoToolStripMenuItem.Size = new Size(111, 22);
             pedidoToolStripMenuItem.Text = "&Pedido";
             // 
             // novoToolStripMenuItem2
             // 
             novoToolStripMenuItem2.Name = "novoToolStripMenuItem2";
-            novoToolStripMenuItem2.Size = new Size(180, 22);
+            novoToolStripMenuItem2.Size = new Size(122, 22);
             novoToolStripMenuItem2.Text = "&Novo";
             novoToolStripMenuItem2.Click += novoToolStripMenuItem2_Click;
             // 
             // buscarToolStripMenuItem
             // 
             buscarToolStripMenuItem.Name = "buscarToolStripMenuItem";
-            buscarToolStripMenuItem.Size = new Size(180, 22);
+            buscarToolStripMenuItem.Size = new Size(122, 22);
             buscarToolStripMenuItem.Text = "&Buscar";
             // 
             // históricoToolStripMenuItem
             // 
             históricoToolStripMenuItem.Name = "históricoToolStripMenuItem";
-            históricoToolStripMenuItem.Size = new Size(180, 22);
+            históricoToolStripMenuItem.Size = new Size(122, 22);
             históricoToolStripMenuItem.Text = "&Histórico";
             // 
             // movimentoToolStripMenuItem
@@ -167,11 +173,41 @@
             caixaToolStripMenuItem.Size = new Size(103, 22);
             caixaToolStripMenuItem.Text = "&Caixa";
             // 
+            // mySqlCommand1
+            // 
+            mySqlCommand1.CacheAge = 0;
+            mySqlCommand1.Connection = null;
+            mySqlCommand1.EnableCaching = false;
+            mySqlCommand1.Transaction = null;
+            // 
+            // mySqlDataAdapter1
+            // 
+            mySqlDataAdapter1.DeleteCommand = null;
+            mySqlDataAdapter1.InsertCommand = null;
+            mySqlDataAdapter1.SelectCommand = null;
+            mySqlDataAdapter1.UpdateCommand = null;
+            // 
+            // statusStrip1
+            // 
+            statusStrip1.Items.AddRange(new ToolStripItem[] { tslUsuario });
+            statusStrip1.Location = new Point(0, 428);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(800, 22);
+            statusStrip1.TabIndex = 3;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // tslUsuario
+            // 
+            tslUsuario.Name = "tslUsuario";
+            tslUsuario.Size = new Size(118, 17);
+            tslUsuario.Text = "toolStripStatusLabel1";
+            // 
             // FrmPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(statusStrip1);
             Controls.Add(menuStrip1);
             IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
@@ -181,6 +217,8 @@
             Load += FrmPrincipal_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -204,5 +242,10 @@
         private ToolStripMenuItem caixaToolStripMenuItem;
         private ToolStripMenuItem usuárioToolStripMenuItem;
         private ToolStripMenuItem categoriaToolStripMenuItem;
+        private MySql.Data.MySqlClient.MySqlCommand mySqlCommand1;
+        private MySql.Data.MySqlClient.MySqlConnection mySqlConnection1;
+        private MySql.Data.MySqlClient.MySqlDataAdapter mySqlDataAdapter1;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel tslUsuario;
     }
 }
